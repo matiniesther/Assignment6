@@ -72,7 +72,11 @@ public class Client {
     /**
      * Serialization. Convert Menu to byte array, and then encode using base64
      *
+
      * @param schedule
+
+     * @param 
+
      * @return
      */
     protected static String scheduleToStr(Schedule schedule) {
