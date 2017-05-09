@@ -62,7 +62,7 @@ public class Client {
     /**
      * Serialization. Convert Menu to byte array, and then encode using base64
      *
-     * @param menu
+     * @param 
      * @return
      */
     protected static String scheduleToStr(Schedule schedule) {
@@ -93,11 +93,11 @@ public class Client {
     public static void main(String[] args) {
         String op = args[0];
         Schedule schedule = buildSchedule();
-        String url = "http://localhost/employee.php";
+        String url = "http://localhost/assignment6.php";
         String scheduleContent = Utils.toStr(schedule);
         String datastr = op.equals("1")
-                ? "op=uploadSchedule&val=" + scheduleContent
-                : "op=getAvailabilty&val=101";
+                ? "op=uploadSchedule&val=" + scheduleContent + "&day=&skill=&hour=" 
+                : "op=getAvailabilty&val" + scheduleContent + "&day=" + args[1] + "&skill=" + args[2] + "&hour=" + args[3];
         try {
             String response = Utils.httpsPost(url, datastr);
             System.out.println(response);
@@ -105,6 +105,9 @@ public class Client {
             System.out.println(exc);
         }
         int k = 0;
+
+
+
 
     }
 
