@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package assignment6;
+package Assignment6;
 
 /**
  *
@@ -11,9 +11,9 @@ package assignment6;
  */
 
 
-import assignment6.model.Employee;
-import assignment6.model.Schedule;
-import assignment6.model.Timeslot;
+import Assignment6.model.Employee;
+import Assignment6.model.Schedule;
+import Assignment6.model.Timeslot;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -31,7 +31,7 @@ public class Client {
     protected static Schedule buildSchedule() {
         Timeslot[] arrEmployee1 = new Timeslot[]{
             new Timeslot( "M", 10),
-            new Timeslot("W", 12),
+            new Timeslot("T", 12),
             new Timeslot("F", 1),
             new Timeslot("R", 5)
         };
@@ -40,18 +40,28 @@ public class Client {
             new Timeslot("W", 3),
             new Timeslot("F", 4)
         };
+        Timeslot[] arrEmployee3 = new Timeslot[]{
+            new Timeslot("M", 12),
+            new Timeslot("F", 13),
+            new Timeslot("W", 14)
+        };
         //this is the arraylist of skills for Employee 1
         ArrayList<String> arrSkillsEm1 = new ArrayList<>();
         arrSkillsEm1.add("Butcher");
         arrSkillsEm1.add("Baker");
         //arrayList for employee 2
         ArrayList<String> arrSkillsEm2 = new ArrayList<>();
-        arrSkillsEm2.add("chef");
+        arrSkillsEm2.add("Chef");
         arrSkillsEm2.add("Gardener");
+        
+        ArrayList<String> arrSkillsEm3 = new ArrayList<>();
+        arrSkillsEm2.add("Butcher");
+        arrSkillsEm2.add("Dishwasher");
         
         Employee [] arrEmployees = new Employee[]{
             new Employee(1, "Dr.Evil", arrSkillsEm1, arrEmployee1),
-            new Employee(2, "Mini Me", arrSkillsEm2, arrEmployee2)
+            new Employee(2, "Mini Me", arrSkillsEm2, arrEmployee2),
+            new Employee(3, "Number Two", arrSkillsEm3, arrEmployee3)
         };
         //making a new schedule for both of the employees
         Schedule schedule = new Schedule(arrEmployees);
@@ -62,7 +72,7 @@ public class Client {
     /**
      * Serialization. Convert Menu to byte array, and then encode using base64
      *
-     * @param menu
+     * @param schedule
      * @return
      */
     protected static String scheduleToStr(Schedule schedule) {
@@ -93,11 +103,11 @@ public class Client {
     public static void main(String[] args) {
         String op = args[0];
         Schedule schedule = buildSchedule();
-        String url = "http://localhost/employee.php";
+        String url = "http://localhost/assignment6.php";
         String scheduleContent = Utils.toStr(schedule);
         String datastr = op.equals("1")
-                ? "op=uploadSchedule&val=" + scheduleContent
-                : "op=getAvailabilty&val=101";
+                ? "op=uploadSchedule&val=" + scheduleContent 
+                : "op=getSchedule" + "&day=" + args[1] + "&skill=" + args[2] + "&hour=" + args[3];
         try {
             String response = Utils.httpsPost(url, datastr);
             System.out.println(response);
@@ -105,6 +115,9 @@ public class Client {
             System.out.println(exc);
         }
         int k = 0;
+
+
+
 
     }
 

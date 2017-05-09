@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package assignment6.model;
+package Assignment6.model;
 
 import java.util.ArrayList;
 
@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Employee implements java.io.Serializable{
     Integer id;
-    protected String name;
+    public String name;
     protected ArrayList<String> arrSkills = new ArrayList<>();
     protected Timeslot [] arrTimeslot;
     
@@ -23,17 +23,30 @@ public class Employee implements java.io.Serializable{
         this.arrSkills = inpArrSkills;
         this.arrTimeslot = inpArrTimeslot;
     }
-    public Timeslot[] getAvailability(){
-        return this.arrTimeslot;
+    
+    
+    
+    public ArrayList getSkills(){
+        return this.arrSkills;
     }
-    public boolean getAvailability(Timeslot inpTimeslot){
-        for (Timeslot arrTimeslot1 : arrTimeslot) {
-            return arrTimeslot1 == inpTimeslot;
+
+    
+    public boolean isAvailable(String day, int hour){
+        for (Timeslot ts : this.arrTimeslot) {
+            if(ts.day.equals(day) && ts.time==hour){
+                return true;
+            }
         }
-        return false;   
+        return false;
     }
-    public Timeslot[] getTimeslot(){
-        return this.arrTimeslot;
+    
+    public boolean hasSkill(String skill){
+        for(int i=0; i<this.arrSkills.size(); i++){ 
+            if(this.arrSkills.get(i).equals(skill)){
+                return true;
+            }
+        }
+        return false;
     }
     
 }

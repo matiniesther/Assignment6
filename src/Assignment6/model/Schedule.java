@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package assignment6.model;
+package Assignment6.model;
 
 /**
  *
@@ -14,13 +14,10 @@ public class Schedule implements java.io.Serializable {
     public Schedule(Employee [] inpArr){
         this.arrEm = inpArr;
     }
-    public Employee getEmployeeById(String id){
-        for (Employee arrEm1 : this.arrEm) {
-            if (arrEm1.id.equals(id)) {
-                return arrEm1;
-            }
-        }
-        return null;
+    public Employee[] getEmployee(){
+        return this.arrEm;
     }
+
+    
 }
 

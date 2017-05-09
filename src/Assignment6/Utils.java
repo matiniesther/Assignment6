@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package assignment6;
+package Assignment6;
 
 
 import java.io.BufferedReader;
@@ -34,7 +34,7 @@ import java.util.Base64;
 public class Utils {
 
     static final String DRIVER = "com.mysql.jdbc.Driver";
-    static final String URL = "jdbc:mysql://localhost/menu_db";
+    static final String URL = "jdbc:mysql://localhost/staff_db";
     static final String USER = "root";
     static final String PASS = "goodyear123!@#";
 
